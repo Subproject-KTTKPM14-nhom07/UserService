@@ -1,5 +1,6 @@
 package com.example.user;
 
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
