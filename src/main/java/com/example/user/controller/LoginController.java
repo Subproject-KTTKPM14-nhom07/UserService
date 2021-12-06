@@ -44,6 +44,7 @@ public class LoginController {
         } catch (Exception e) {
             result = "Server Error";
             httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+            e.printStackTrace();
         }
         return new ResponseEntity<>(result,httpStatus);
     }

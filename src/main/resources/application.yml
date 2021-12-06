@@ -13,11 +13,11 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
   application:
     name: USER-SERVICE
-#  config:
-#    import: "optional:configserver:"
-#  cloud:
-#    config:
-#      uri: http://localhost:8888
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
 
 
 server:
