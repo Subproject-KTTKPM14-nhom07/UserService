@@ -4,6 +4,7 @@ import com.example.user.entity.User;
 import com.example.user.responsitory.UserReponsitory;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,5 +46,20 @@ public class UserServiceImpl implements UserService{
             return false;
         }
         return true;
+    }
+
+    @Override
+    public User getUserByPhone(String phone) {
+        return userReponsitory.getUserByPhone(phone);
+    }
+
+    @Override
+    public boolean checkLogin(User user) {
+        User user1 = getUserByPhone(user.getPhone());
+        if (StringUtils.equals(user.getName(), user1.getName())
+                && StringUtils.equals(user.getPassword(), user1.getPassword())) {
+            return true;
+        }
+        return  false;
     }
 }

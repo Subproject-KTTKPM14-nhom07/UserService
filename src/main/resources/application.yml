@@ -1,7 +1,7 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/user_service
-    username: dat
+    url: jdbc:mysql://database-1.cc3snbvcukcq.ap-southeast-1.rds.amazonaws.com/user_service
+    username: admin
     password: sapassword
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
@@ -13,11 +13,11 @@ spring:
         dialect: org.hibernate.dialect.MySQL5Dialect
   application:
     name: USER-SERVICE
-  config:
-    import: "optional:configserver:"
-  cloud:
-    config:
-      uri: http://localhost:8888
+#  config:
+#    import: "optional:configserver:"
+#  cloud:
+#    config:
+#      uri: http://localhost:8888
 
 
 server:

@@ -10,5 +10,6 @@ public interface UserService {
     public List<User> getAllUsers();
     public User getUserById(Long userId);
     public boolean deleteUser(Long userId);
-
+    public User getUserByPhone(String phone);
+    public boolean checkLogin(User user);
 }
