@@ -32,18 +32,18 @@ public class LoginController {
     public ResponseEntity<String> login(HttpServletRequest request, @RequestBody User user){
         String result = "";
         HttpStatus httpStatus = null;
-        log.info(user.toString());
+//        log.info(user.toString());
         try {
             if(userService.checkLogin(user)){
                 result = jwtService.generateTokenLogin(user.getPhone());
                 httpStatus = HttpStatus.OK;
             }else {
                 result = "Wrong username and password";
-                httpStatus = HttpStatus.BAD_REQUEST;
+                httpStatus = HttpStatus.OK;
             }
         } catch (Exception e) {
             result = "Server Error";
-            httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+            httpStatus = HttpStatus.OK;
             e.printStackTrace();
         }
         return new ResponseEntity<>(result,httpStatus);

@@ -45,11 +45,12 @@ public class SecurityCongfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().ignoringAntMatchers("/user/**");
 
-        http.authorizeRequests().antMatchers("/api/login/**").permitAll().antMatchers("/api/regirter/**").permitAll();
+        http.authorizeRequests().antMatchers("/api/login/**").permitAll().antMatchers("/api/regirter/**","/user/userFromToken").permitAll();
 
         http.antMatcher("/user/**").httpBasic().authenticationEntryPoint(restAuthenticationEntryPoint()).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/user/**").access("hasRole('ROLE_USER')")
+//                .antMatchers(HttpMethod.GET, "/user/**").access("hasRole('ROLE_USER')")
+                .antMatchers(HttpMethod.GET, "/user/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/**").access("hasRole('ROLE_USER')")
                 .antMatchers(HttpMethod.DELETE, "/user/**").access("hasRole('ROLE_USER')").and()
                 .addFilterBefore(jwtAuthenticationTokenFilter(), UsernamePasswordAuthenticationFilter.class)

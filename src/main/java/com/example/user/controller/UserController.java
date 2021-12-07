@@ -1,5 +1,6 @@
 package com.example.user.controller;
 
+import com.example.user.entity.Token;
 import com.example.user.entity.User;
 import com.example.user.service.JwtService;
 import com.example.user.service.UserService;
@@ -50,5 +51,11 @@ public class UserController {
 
     }
 
+    @PostMapping("/userFromToken")
+    public User userfromtoken(@RequestBody User token) {
+        log.info(token.toString());
+        User user = userService.checkUserJWT(token.getName());
+        return user;
+    }
 
 }
