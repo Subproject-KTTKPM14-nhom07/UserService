@@ -17,21 +17,9 @@ spring:
     import: "optional:configserver:"
   cloud:
     config:
-      uri: http://localhost:8888
-
+      uri: http://18.136.126.140:8888
 
 server:
   port: 8000
 
-resilience4j:
-  retry:
-    instances:
-      basic:
-        maxRetryAttemps: 5
-        waitDuration: 3s
-  ratelimiter:
-    instances:
-      basic:
-        limitForPeriod: 2
-        limitRefreshPeriod: 1s
-        timeoutDuration: 1s
+

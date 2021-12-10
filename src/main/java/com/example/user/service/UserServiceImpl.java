@@ -21,29 +21,23 @@ public class UserServiceImpl implements UserService{
     private JwtService jwtService;
 
     @Override
-    @Retry(name="basic")
-    @RateLimiter(name="basic")
     public User saveUser(User user) {
         return userReponsitory.saveAndFlush(user);
     }
 
     @Override
-    @Retry(name="basic")
-    @RateLimiter(name="basic")
+//    @RateLimiter(name="user")
     public List<User> getAllUsers() {
         return userReponsitory.findAll();
     }
 
     @Override
-    @Retry(name="basic")
-    @RateLimiter(name="basic")
+    @RateLimiter(name="user")
     public User getUserById(Long userId) {
         return userReponsitory.findById(userId).get();
     }
 
     @Override
-    @Retry(name="basic")
-    @RateLimiter(name="basic")
     public boolean deleteUser(Long userId) {
         try {
             userReponsitory.deleteById(userId);
