@@ -34,6 +34,11 @@ public class UserController {
         return userService.getUserById(userId);
     }
 
+
+    @GetMapping("/retry/{id}")
+    public User  getUserByIdRT(@PathVariable("id") Long userId){
+        return userService.getUserByIdRT(userId);
+    }
     @GetMapping("/")
     public List<User> getAllUsers(){
         return userService.getAllUsers();

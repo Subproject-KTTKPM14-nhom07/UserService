@@ -13,4 +13,6 @@ public interface UserService {
     public User getUserByPhone(String phone);
     public boolean checkLogin(User user);
     public User checkUserJWT(String token);
+
+    public User getUserByIdRT(Long userId);
 }

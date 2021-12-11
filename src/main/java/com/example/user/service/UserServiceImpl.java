@@ -32,8 +32,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    @RateLimiter(name="user")
     public User getUserById(Long userId) {
+        return userReponsitory.findById(userId).get();
+    }
+
+    //sử dụng ratelimier để giới hạn lượng request đi vào
+    @Override
+    @RateLimiter(name="user")
+    public User getUserByIdRT(Long userId) {
         return userReponsitory.findById(userId).get();
     }
 
